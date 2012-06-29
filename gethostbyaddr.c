@@ -1,3 +1,9 @@
+/*
+ * I think Wietse posted these to postfix-users some years ago
+ * I keep them around because sometimes it's useful to know what
+ * these system calls are actually returning.
+ */
+
 #include <sys/types.h>
 #include <sys/socket.h>
 #include <netinet/in.h>

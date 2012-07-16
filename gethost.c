@@ -10,26 +10,28 @@ void lookupIP(int);
 void lookupHost(int);
 
 int main(int argc, char **argv)
-int     argc;
-char  **argv;
 {
 	struct hostent *hp;
     	long    addr;
+	int c;
 
  	if (argc != 3) {
 		fprintf(stderr, "usage: %s i.p.addres\n", argv[0]);
 		exit(1);
     	}
 
-	(strcmp(argv[1], "-i") == 0) ?
-		lookupIP(*argv[1]) : (strcmp(argv[1], "-h") == 0) ?
-		lookupHost(*argv[1]) : usage();
+	while (--argc > 0 && (*++argv)[1] == '-')
+		while (c = *++argv[1])
+			(strcmp(c, "i") == 0) ?
+				lookupIP(*argv[2]) : (strcmp(c, "h") == 0) ?
+				lookupHost(*argv[2]) : usage();
  
 }
 
-void lookupIP(args)
+void lookupIP(int host)
 {
-	addr = inet_addr(argv[1]);
+	long addr;
+	addr = inet_addr(host);
     	if (hp = gethostbyaddr((char *) &addr, sizeof(addr), AF_INET)) {
 		printf("Hostname:\t%s\n", hp->h_name);
 		printf("Aliases:\t");

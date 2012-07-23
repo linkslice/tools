@@ -14,6 +14,7 @@ int main()
 	int count = 0;
 	while (count != 1) {
 		printf("%d\n", makeRandom());
+		sleep(1);
 	}
 	
 }
